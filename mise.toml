@@ -1,0 +1,23 @@
+[tools]
+node = "24"
+pnpm = "11.25.0"
+
+[tasks.install]
+run = "pnpm install"
+
+[tasks.dev]
+run = "pnpm vite --host"
+
+[tasks.test]
+run = "node --test 'test/*.test.ts'"
+
+[tasks.typecheck]
+run = "pnpm tsc"
+
+[tasks.build]
+depends = ["typecheck"]
+run = "pnpm vite build"
+
+[tasks.preview]
+depends = ["build"]
+run = "pnpm vite preview --host"
